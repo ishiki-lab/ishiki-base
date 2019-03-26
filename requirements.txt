@@ -1,0 +1,10 @@
+tinkerforge
+pillow
+rdflib
+influxdb
+pyjwt
+paho-mqtt
+netifaces
+pickledb
+requests
+pyzmq
