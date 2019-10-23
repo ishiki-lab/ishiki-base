@@ -4,15 +4,12 @@ RUN [ "cross-build-start" ]
 
 # install deps
 RUN sudo apt-get update
-RUN sudo apt-get -y install python-dev wget python-setuptools libjpeg-dev python-cryptography python-imaging build-essential
-RUN wget https://bootstrap.pypa.io/get-pip.py
-RUN python get-pip.py
+RUN sudo apt-get -y install python3-dev python3-pip python3-pil python3-setuptools
 
 RUN sudo mkdir /opt/ishiki
 COPY requirements.txt /opt/ishiki/requirements.txt
 
 WORKDIR /opt/ishiki
-RUN pip install wheel
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 
 RUN [ "cross-build-end" ]
