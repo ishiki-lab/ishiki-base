@@ -1,0 +1,18 @@
+FROM  balenalib/raspberry-pi-debian-python:bullseye
+
+RUN [ "cross-build-start" ]
+
+# install deps
+#RUN sudo apt-get update
+#RUN sudo apt-get -y install python-dev wget python-setuptools libjpeg-dev python-cryptography python-imaging build-essential
+#RUN wget https://bootstrap.pypa.io/get-pip.py
+#RUN python3 get-pip.py
+
+RUN sudo mkdir /opt/ishiki
+COPY requirements.txt /opt/ishiki/requirements.txt
+
+WORKDIR /opt/ishiki
+RUN python3 -m pip install wheel
+RUN python3 -m pip install -r requirements.txt
+
+RUN [ "cross-build-end" ]

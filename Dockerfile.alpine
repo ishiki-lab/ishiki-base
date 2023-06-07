@@ -1,0 +1,14 @@
+FROM balenalib/raspberry-pi-alpine-python:3.17
+
+RUN [ "cross-build-start" ]
+
+RUN set -ex && apk --no-cache add sudo
+
+RUN sudo mkdir /opt/ishiki
+COPY requirements.txt /opt/ishiki/requirements.txt
+
+WORKDIR /opt/ishiki
+RUN python3 -m pip install wheel
+RUN python3 -m pip install -r requirements.txt
+
+RUN [ "cross-build-end" ]
